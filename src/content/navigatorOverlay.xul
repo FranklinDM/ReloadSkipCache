@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE overlay [
+    <!ENTITY % sourceDTD SYSTEM "chrome://global/locale/viewSource.dtd" >
+    %sourceDTD;
+    <!ENTITY % reloadSkipCacheDTD SYSTEM "chrome://reloadskipcache/locale/main.dtd">
+    %reloadSkipCacheDTD;
+]>
+
+<overlay id="reloadskipcache-navigator-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <toolbar id="nav-bar">
+        <toolbarbutton id="reload-button"
+                       context="reload-context-menu" />
+    </toolbar>
+    
+    <popupset id="contentAreaContextSet">
+        <menupopup id="contentAreaContextMenu">
+            <menuitem id="context-reload-skipcache"
+                      label="&reloadSkipCache.label;"
+                      accesskey="&reloadSkipCache.accesskey;"
+                      oncommand="BrowserReloadSkipCache();"
+                      insertafter="context-reload">
+            </menuitem>
+        </menupopup>
+    </popupset>
+    
+    <popupset id="mainPopupSet">
+        <menupopup id="reload-context-menu">
+            <menuitem id="reload-context-reload"
+                      label="&reloadCmd.label;"
+                      accesskey="&reloadCmd.accesskey;"
+                      oncommand="BrowserReload();" />
+            <menuitem id="reload-context-reload-skipcache"
+                      label="&reloadSkipCache.label;"
+                      accesskey="&reloadSkipCache.accesskey;"
+                      oncommand="BrowserReloadSkipCache();" />
+        </menupopup>
+    </popupset>
+</overlay>
